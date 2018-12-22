@@ -87,7 +87,7 @@ class App extends Component {
           </p>
         </header>
         <Selection countries={this.state.countries} percapitaChange={this.percapitaChange} selectionChange={this.selectionChange}/>
-        <Graph graphdata={this.state.graphdata} />
+        <Graph percapita={this.state.percapita} graphdata={this.state.graphdata} />
       </div>
     );
   }

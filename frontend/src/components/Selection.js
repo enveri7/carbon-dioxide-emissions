@@ -1,4 +1,5 @@
 import React from "react";
+import {Checkbox, Col, Grid, Row, FormControl} from 'react-bootstrap';
 
 class Selection extends React.Component {
 
@@ -15,20 +16,26 @@ class Selection extends React.Component {
   render() {
     const countries = this.props.countries;
     return (
-      <div>
-        <form>
-          <select onChange={this.handleSelectionChange}>
-            {countries && Object.keys(countries).map(key => (
-              <option key={key} index={key} value={countries[key]["Country Code"]}>{countries[key]["Country Name"]}</option>
-            ))}
-          </select>
-          <br/>
-          <label>
-            <input type="checkbox" name="lname" onChange={this.handlePercapitaChange}/>
-            Per capita
-          </label>
-        </form>
-      </div>
+      <Grid>
+        <Row className="show-grid">
+          <Col md={4}>
+          </Col>
+          <Col md={4} align="center">
+            <form>
+              <FormControl className="select-list" onChange={this.handleSelectionChange} componentClass="select" placeholder="select">
+                {countries && Object.keys(countries).map(key => (
+                  <option key={key} index={key} value={countries[key]["Country Code"]}>{countries[key]["Country Name"]}</option>
+                ))}
+              </FormControl>
+              <Checkbox className="pull-left" onChange={this.handlePercapitaChange}>
+                Per capita
+              </Checkbox>
+            </form>
+          </Col>
+          <Col md={4}>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

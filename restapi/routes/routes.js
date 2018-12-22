@@ -31,7 +31,9 @@ const router = function(app) {
       return data["Country Code"].toLowerCase() == country_code.toLowerCase()
         ? true
         : false;
-    });
+    })
+
+    delete country_emissions[0][""]; // for some reason there is empty key value pair in json data, we remove it here
 
     if (country_emissions.length == 1) {
       res.status(200).send(country_emissions[0]);
