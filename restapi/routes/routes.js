@@ -6,6 +6,7 @@ const router = function(app) {
     res.status(200).send("Welcome to our restful API");
   });
 
+  // Get all countries
   app.get("/countries", (req, res) => {
     const countries = emissions.map(data => {
       const returnObject = {
@@ -22,6 +23,7 @@ const router = function(app) {
     }
   });
 
+  // Get emiissions by country
   app.get("/emissions/:countrycode", (req, res) => {
     const country_code = req.params.countrycode;
 
@@ -38,6 +40,7 @@ const router = function(app) {
     }
   });
 
+  // Get emissions by country per capita
   app.get("/emissions/:countrycode/percapita", (req, res) => {
     const country_code = req.params.countrycode;
 
@@ -68,13 +71,11 @@ const router = function(app) {
 function calculateEmissionsPerCapita(country_emissions, country_population) {
   const current_year = new Date().getFullYear();
 
-  let country_emissions_percapita = {};
-  country_emissions_percapita["Country Name"] =
-    country_emissions["Country Name"];
-  country_emissions_percapita["Country Code"] =
-    country_emissions["Country Code"];
-  country_emissions_percapita["Country Indicator"] =
-    "CO2 emissions per capita (metric tons)";
+  let country_emissions_percapita = {
+    "Country Name": country_emissions["Country Name"],
+    "Country Code": country_emissions["Country Code"],
+    "Country Indicator": "CO2 emissions per capita (metric tons)"
+  };
 
   for (let i = 1960; i <= current_year; i++) {
     let yearly_emissions = country_emissions[i.toString()];
