@@ -86,7 +86,7 @@ class App extends Component {
             CO2 emissions
           </p>
         </header>
-        <Selection countries={this.state.countries} percapitaChange={this.percapitaChange} selectionChange={this.selectionChange}/>
+        <Selection countrycode={this.state.countrycode} countries={this.state.countries} percapitaChange={this.percapitaChange} selectionChange={this.selectionChange}/>
         <Graph percapita={this.state.percapita} graphdata={this.state.graphdata} />
       </div>
     );

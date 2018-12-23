@@ -15,6 +15,11 @@ class Selection extends React.Component {
 
   render() {
     const countries = this.props.countries;
+    const selected = this.props.countrycode;
+    const list = Object.keys(countries).map(key => (
+        <option key={key} value={countries[key]["Country Code"]}>{countries[key]["Country Name"]}</option>
+      ))
+
     return (
       <Grid>
         <Row className="show-grid">
@@ -22,10 +27,8 @@ class Selection extends React.Component {
           </Col>
           <Col md={4} align="center">
             <form>
-              <FormControl className="select-list" onChange={this.handleSelectionChange} componentClass="select" placeholder="select">
-                {countries && Object.keys(countries).map(key => (
-                  <option key={key} index={key} value={countries[key]["Country Code"]}>{countries[key]["Country Name"]}</option>
-                ))}
+              <FormControl value={selected} className="select-list" onChange={this.handleSelectionChange} componentClass="select" placeholder="select">
+                {list}
               </FormControl>
               <Checkbox className="pull-left" onChange={this.handlePercapitaChange}>
                 Per capita
