@@ -4,18 +4,17 @@ import {Checkbox, Col, Grid, Row, FormControl} from 'react-bootstrap';
 class Selection extends React.Component {
 
   handleSelectionChange = (e) => {
-    console.log(e.target.value);
     this.props.selectionChange(e.target.value);
   };
 
   handlePercapitaChange = (e) => {
-    console.log(e.target.checked);
     this.props.percapitaChange(e.target.checked);
   };
 
   render() {
     const countries = this.props.countries;
     const selected = this.props.countrycode;
+    // Country options for select list
     const list = Object.keys(countries).map(key => (
         <option key={key} value={countries[key]["Country Code"]}>{countries[key]["Country Name"]}</option>
       ))

@@ -1,13 +1,13 @@
 import requests, zipfile, io, datetime, os, shutil, glob, json, csv, logging
 
-# Download a zip file and unzip it to csv dir
-def get_zip_file_and_unzip(download_url):
+# Download a zip file and unzip it to files dir
+def get_zip_data_and_unzip(download_url):
         r = requests.get(download_url)
         z = zipfile.ZipFile(io.BytesIO(r.content))
-        z.extractall('./csv/')
+        z.extractall('./files/')
 
-# create a new csv file without originals files useless rows
-def remove_lines(read_file_name, output_file_name, line_count):
+# create a new csv file without metadata
+def create_new_csv_files_without_metadata(read_file_name, output_file_name, line_count):
     with open(read_file_name,'r') as f:
         with open(output_file_name,'w') as f1:
             reader = csv.reader(f, delimiter=',')
@@ -49,41 +49,37 @@ def main():
     logging.basicConfig(filename='script.log',level=logging.DEBUG)
     logging.debug("\n" + timestamp() + ": Script started");
 
-    # create json and backup directories if they do not exist
-    if not os.path.exists('./json/'):
-        os.mkdir('./json/')
-
+    # create backup directory if it does not exist
     if not os.path.exists('./backup/'):
         os.mkdir('./backup/')
 
-    files = glob.glob("./csv/*")
+    files = glob.glob("./files/*")
 
-    # backup files if csv directory exists and it contains files
-    if os.path.exists('./csv/') and files:
-        shutil.move('./csv/', './backup/' + timestamp())
+    # backup files if files directory exists and it contains any files
+    if os.path.exists('./files/') and files:
+        shutil.move('./files/', './backup/' + timestamp())
 
-    # create a new csv directory after backup
-    if not os.path.exists('./csv/'):
-        os.mkdir('./csv/')
+    # create a new files directory after backup
+    if not os.path.exists('./files/'):
+        os.mkdir('./files/')
 
-    # Download zipped data and unzip it to csv dir
-    get_zip_file_and_unzip(emissions_url)
-    get_zip_file_and_unzip(population_url)
+    # Download zipped data and unzip it to files dir
+    get_zip_data_and_unzip(emissions_url)
+    get_zip_data_and_unzip(population_url)
 
-    files = glob.glob("./csv/*")
+    files = glob.glob("./files/*")
 
-    # Remove useless first rows from csv files and get headers
+    # Remove metadata rows from csv and get headers
     for file in files:
-        if "Metadata" not in file and "API_EN.ATM.CO2E" in file:
+        if "Metadata" not in file and "API_EN.ATM.CO2E" in file: # find the correct file
             headers = get_headers(file, 5)
-            remove_lines(file, './csv/emissions.csv', 5)
-        elif "Metadata" not in file and "API_SP.POP.TOTL" in file:
-            remove_lines(file, './csv/population.csv', 5)
+            create_new_csv_files_without_metadata(file, './files/emissions.csv', 5)
+        elif "Metadata" not in file and "API_SP.POP.TOTL" in file: # find the correct file
+            create_new_csv_files_without_metadata(file, './files/population.csv', 5)
 
-    print(headers)
     # Turn csv files to json files
-    create_json_file_from_csv('./csv/emissions.csv', './json/emissions.json', headers)
-    create_json_file_from_csv('./csv/population.csv', './json/population.json', headers)
+    create_json_file_from_csv('./files/emissions.csv', './files/emissions.json', headers)
+    create_json_file_from_csv('./files/population.csv', './files/population.json', headers)
 
 if __name__ == "__main__":
     main()

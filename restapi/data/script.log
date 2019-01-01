@@ -1,53 +1,29 @@
 DEBUG:root:
-2018-12-23 00:38:33: Script started
+2019-01-01 23:08:22: Script started
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
 DEBUG:root:
-2018-12-23 00:38:49: Script started
+2019-01-01 23:08:53: Script started
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
 DEBUG:root:
-2018-12-23 00:43:25: Script started
+2019-01-01 23:11:16: Script started
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
 DEBUG:root:
-2018-12-23 00:48:14: Script started
+2019-01-01 23:22:08: Script started
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
 DEBUG:root:
-2018-12-23 00:53:40: Script started
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
-DEBUG:root:
-2018-12-23 00:54:02: Script started
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
-DEBUG:root:
-2018-12-23 00:55:24: Script started
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
-DEBUG:root:
-2018-12-23 01:01:36: Script started
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
-DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/SP.POP.TOTL?downloadformat=csv HTTP/1.1" 200 79715
-DEBUG:root:
-2018-12-23 01:10:08: Script started
+2019-01-01 23:22:39: Script started
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org
 DEBUG:urllib3.connectionpool:http://api.worldbank.org:80 "GET /v2/en/indicator/EN.ATM.CO2E.KT?downloadformat=csv HTTP/1.1" 200 75567
 DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.worldbank.org

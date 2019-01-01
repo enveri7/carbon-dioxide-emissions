@@ -1,0 +1,9 @@
+# dependencies
+/node_modules
+
+# data
+data/backup/
+data/files/
+__pycache__/
+
+*.log

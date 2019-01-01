@@ -1,5 +1,5 @@
-const emissions = require("../data/json/emissions.json");
-const population = require("../data/json/population.json");
+const emissions = require("../data/files/emissions.json");
+const population = require("../data/files/population.json");
 
 const router = function(app) {
   app.get("/", function(req, res) {

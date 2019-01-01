@@ -8,8 +8,9 @@ class App extends Component {
   state = {
     countries: [],
     graphdata: {},
-    countrycode: "FIN",
-    percapita: false
+    countrycode: "FIN", // FIN data will be shown first
+    percapita: false,
+    loading: true
   }
 
   componentDidMount() {
@@ -28,12 +29,17 @@ class App extends Component {
     })
     .then(data => data.json())
     .then(graphdata => {
-      this.setState({graphdata});
+      this.setState({graphdata}, () => {
+        if (this.state.loading) {
+          this.setState({loading: false});
+        }
+      });
+    }).catch(err => {
     });
   }
 
   getEmissionsPerCapita = () => {
-    fetch("http://localhost:8080/emissions/" + this.state.countrycode +"/percapita")
+    fetch("http://localhost:8080/emissions/" + this.state.countrycode + "/percapita")
     .then((response, err) => {
       if (response.ok) {
         return response;
@@ -44,7 +50,8 @@ class App extends Component {
     .then(data => data.json())
     .then(graphdata => {
       this.setState({graphdata});
-    });
+    }).catch(err => {
+    });;
   }
 
   getCountries = () => {
@@ -58,8 +65,10 @@ class App extends Component {
     })
     .then(data => data.json())
     .then(countries => {
+      countries.sort(function(a,b) {return (a["Country Name"] > b["Country Name"]) ? 1 : ((b["Country Name"] > a["Country Name"]) ? -1 : 0);} );
       this.setState({countries});
-    });
+    }).catch(err => {
+    });;
   }
 
   updateGraphData = () => {
@@ -82,12 +91,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
+          <h2>
             CO2 emissions
-          </p>
+          </h2>
         </header>
         <Selection countrycode={this.state.countrycode} countries={this.state.countries} percapitaChange={this.percapitaChange} selectionChange={this.selectionChange}/>
-        <Graph percapita={this.state.percapita} graphdata={this.state.graphdata} />
+        <Graph loading={this.state.loading} percapita={this.state.percapita} graphdata={this.state.graphdata} />
       </div>
     );
   }
