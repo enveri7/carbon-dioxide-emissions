@@ -2,8 +2,9 @@
 /node_modules
 
 # data
-data/backup/
-data/files/
-__pycache__/
+data/backup
+data/files
+data/script.log
+/__pycache__
 
-*.log
+npm-debug.log*
