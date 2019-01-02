@@ -2,10 +2,7 @@ const emissions = require("../data/files/emissions.json");
 const population = require("../data/files/population.json");
 
 const router = function(app) {
-  app.get("/", function(req, res) {
-    res.status(200).send("Welcome to our restful API");
-  });
-
+  
   // Get all countries
   app.get("/countries", (req, res) => {
     const countries = emissions.map(data => {
@@ -29,8 +26,8 @@ const router = function(app) {
 
     const country_emissions = emissions.filter(data => {
       return data["Country Code"].toLowerCase() == country_code.toLowerCase()
-        ? true
-        : false;
+      ? true
+      : false;
     })
 
     delete country_emissions[0][""]; // for some reason there is empty key value pair in json data, we remove it here
@@ -48,14 +45,14 @@ const router = function(app) {
 
     const country_emissions = emissions.filter(data => {
       return data["Country Code"].toLowerCase() == country_code.toLowerCase()
-        ? true
-        : false;
+      ? true
+      : false;
     });
 
     const country_population = population.filter(data => {
       return data["Country Code"].toLowerCase() == country_code.toLowerCase()
-        ? true
-        : false;
+      ? true
+      : false;
     });
 
     if (country_emissions.length == 1 && country_population.length == 1) {

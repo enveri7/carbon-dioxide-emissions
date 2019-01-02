@@ -6,18 +6,21 @@ import Graph from "./components/Graph";
 class App extends Component {
 
   state = {
-    countries: [],
-    graphdata: {},
-    countrycode: "FIN", // FIN data will be shown first
-    percapita: false,
-    loading: true
+    countries: [], // Available countries
+    graphdata: {}, // Graph data
+    countrycode: "FIN", // FIN data will be fetched when opening app for the first time
+    percapita: false, // Get graph data per capita
+    loading: true, // Is app loading
+    error: "" // Error message
   }
 
+  // Get data from restapi
   componentDidMount() {
     this.getCountries();
     this.getEmissionsByCountry(this.state.countrycode);
   }
 
+  // Get emission data by country
   getEmissionsByCountry = () => {
     fetch("http://localhost:8080/emissions/" + this.state.countrycode)
     .then((response, err) => {
@@ -29,15 +32,21 @@ class App extends Component {
     })
     .then(data => data.json())
     .then(graphdata => {
-      this.setState({graphdata}, () => {
+      this.setState({graphdata, error: ""}, () => {
         if (this.state.loading) {
           this.setState({loading: false});
         }
       });
     }).catch(err => {
+      this.setState({graphdata: {}, error: "Could not fetch data."}, () => {
+        if (this.state.loading) {
+          this.setState({loading: false});
+        }
+      });
     });
   }
 
+  // Get emission data per capita
   getEmissionsPerCapita = () => {
     fetch("http://localhost:8080/emissions/" + this.state.countrycode + "/percapita")
     .then((response, err) => {
@@ -49,12 +58,16 @@ class App extends Component {
     })
     .then(data => data.json())
     .then(graphdata => {
-      this.setState({graphdata});
+      this.setState({graphdata, error: ""});
     }).catch(err => {
-    });;
+      this.setState({graphdata: {}, error: "Could not fetch data."});
+    });
+
   }
 
+  // Get all available countries
   getCountries = () => {
+    this.setState({error: ""});
     fetch("http://localhost:8080/countries/")
     .then((response, err) => {
       if (response.ok) {
@@ -67,8 +80,7 @@ class App extends Component {
     .then(countries => {
       countries.sort(function(a,b) {return (a["Country Name"] > b["Country Name"]) ? 1 : ((b["Country Name"] > a["Country Name"]) ? -1 : 0);} );
       this.setState({countries});
-    }).catch(err => {
-    });;
+    }).catch(err => {});
   }
 
   updateGraphData = () => {
@@ -96,7 +108,7 @@ class App extends Component {
           </h2>
         </header>
         <Selection countrycode={this.state.countrycode} countries={this.state.countries} percapitaChange={this.percapitaChange} selectionChange={this.selectionChange}/>
-        <Graph loading={this.state.loading} percapita={this.state.percapita} graphdata={this.state.graphdata} />
+        <Graph error={this.state.error} loading={this.state.loading} percapita={this.state.percapita} graphdata={this.state.graphdata} />
       </div>
     );
   }
