@@ -2,9 +2,7 @@
 /node_modules
 
 # data
-data/backup
-data/files
-data/script.log
+data/
 /__pycache__
 
 npm-debug.log*
