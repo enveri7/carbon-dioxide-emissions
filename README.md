@@ -1,6 +1,6 @@
 # CO2 emissions application  
 
-This is a small application that I made for viewing CO2 selected countries emissions.  
+This is a small application that I made for viewing different countries CO2 emissions.  
 
 ## Requirements  
 
@@ -14,9 +14,9 @@ npm 6.2.0
 $ npm install in both /restapi and /frontend folders  
 
 ### Fetch zipped csv data and modify data to right format  
-$ python data_script.py  
+$ python restapi/data_script.py  
 
 ### Install npm dependencies  
 $ npm start in both /restapi and /frontend folders  
 
-Frontend application should now be running on localhost:3000.
+Frontend application should now be running on localhost:3000.  
