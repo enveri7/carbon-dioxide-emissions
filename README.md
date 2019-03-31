@@ -16,7 +16,7 @@ $ npm install in both /restapi and /frontend folders
 ### Fetch zipped csv data and modify data to right format  
 $ python restapi/data_script.py  
 
-### Install npm dependencies  
+### Start app  
 $ npm start in both /restapi and /frontend folders  
 
 Frontend application should now be running on localhost:3000.  
